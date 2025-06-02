@@ -1,26 +1,3 @@
-# my_llm_chatbot
-# Local Document Q&A Chatbot with Mistral & Langchain
-
-This project implements a locally-run chatbot that allows you to ask questions about your Word (.docx) and PowerPoint (.pptx) documents. It uses a Retrieval Augmented Generation (RAG) approach, leveraging the Mistral Large Language Model (LLM) hosted locally via Ollama, Langchain for orchestration, ChromaDB for vector storage, and Streamlit for the user interface.
-
-**Key Features:**
-
-*   **Private & Offline:** All processing, including LLM inference, happens on your local machine. No data is sent to external services.
-*   **Learns from Your Documents:** Ingests content from your specified Word and PowerPoint files.
-*   **Natural Language Queries:** Ask questions in plain English and get answers based on the document content.
-*   **Powered by Mistral:** Utilizes a powerful open-source LLM for response generation.
-*   **Easy-to-Use Interface:** A simple web-based chat interface built with Streamlit.
-
-## Project Structure
-├── documents/ # <-- CREATE THIS: Place your .docx and .pptx files here
-
-├── local_vector_db/ # Directory where the vector store will be created (auto-generated)
-
-├── app.py # The Streamlit chatbot application
-
-├── ingest_data.py # Script to process documents and create the vector store
-
-└── README.md # This file
 
 ## Prerequisites
 
@@ -38,6 +15,7 @@ Before you begin, ensure you have the following installed:
 ## Setup Instructions
 
 1.  **Clone the Repository (or Download Files):**
+    If you have Git installed:
     ```bash
     git clone <your-repository-url>
     cd <repository-name>
@@ -60,7 +38,7 @@ Before you begin, ensure you have the following installed:
         ```
 
 3.  **Install Dependencies:**
-    Create a `requirements.txt` file with the following content:
+    Create a `requirements.txt` file in your project root with the following content:
     ```txt
     langchain
     langchain_community
@@ -72,7 +50,7 @@ Before you begin, ensure you have the following installed:
     chromadb
     streamlit
     ```
-    Then, install the dependencies:
+    Then, install the dependencies from your activated virtual environment:
     ```bash
     pip install -r requirements.txt
     ```
@@ -93,3 +71,14 @@ This step processes your documents, creates embeddings, and builds a local vecto
 Open your terminal (with the virtual environment activated) in the project directory and run:
 ```bash
 python ingest_data.py
+```
+
+**Step 2: Run the Chatbot Application**
+
+Once the data ingestion is complete, you can start the chatbot interface.
+
+Open your terminal in the project directory and run:
+```bash
+streamlit run app.py
+```
+This will typically open a new tab in your web browser, usually at http://localhost:8501. You can now interact with the chatbot by typing your questions into the input field.
